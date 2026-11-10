@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>31.1650°N 121.4050°E — 我在哪</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  html, body { margin: 0; height: 100%; background: #0d1117; color: #e6edf3;
+    font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  #map { position: absolute; inset: 0; }
+  .hud { position: absolute; z-index: 900; left: 16px; top: 16px; padding: 12px 14px;
+    background: rgba(13, 17, 23, .82); border: 1px solid #28323f; border-radius: 10px;
+    backdrop-filter: blur(6px); pointer-events: none; }
+  .hud h1 { margin: 0 0 6px; font-size: 15px; letter-spacing: .04em; }
+  .hud p { margin: 2px 0; color: #8b949e; font-size: 12px; }
+  .hud b { color: #3ba55d; font-weight: 600; }
+  .cursor { position: absolute; z-index: 900; right: 16px; bottom: 28px; padding: 8px 10px;
+    background: rgba(13, 17, 23, .82); border: 1px solid #28323f; border-radius: 8px;
+    color: #8b949e; font-size: 12px; }
+  .cursor b { color: #3ba55d; }
+  .leaflet-container { background: #0d1117; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div class="hud">
+  <h1>31.1650°N 121.4050°E</h1>
+  <p>上海 · 徐汇 · 冲积平原</p>
+  <p>投影：Web Mercator (EPSG:3857)</p>
+  <p>底图切换：右上角图层按钮</p>
+</div>
+<div class="cursor" id="cursor">经纬度：移动鼠标</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const HOME = [31.1650, 121.4050];
+  const map = L.map('map', { zoomControl: true, worldCopyJump: true }).setView(HOME, 11);
+
+  const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap contributors'
+  });
+  const imagery = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    { maxZoom: 19, attribution: 'Imagery &copy; Esri' }
+  );
+  const terrain = L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
+    maxZoom: 17, attribution: '&copy; OpenTopoMap'
+  });
+  osm.addTo(map);
+
+  L.control.layers({ '街道 OSM': osm, '卫星影像': imagery, '地形': terrain }, null, { position: 'topright' }).addTo(map);
+  L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
+
+  const marker = L.marker(HOME).addTo(map);
+  marker.bindPopup(
+    '<b>上海 · Shanghai</b><br>31.1650°N 121.4050°E<br>' +
+    '<span style="color:#8b949e">北亚热带 · 年均温 17–18 °C · 年降水 ≈ 1200 mm</span>'
+  );
+
+  // 30°N / 120°E 十字准星：把「度」画出来
+  L.polyline([[30, 121.4737], [30, 120]], { color: '#3ba55d', weight: 1, opacity: .45, dashArray: '4 6' }).addTo(map);
+  L.polyline([[31.2304, 120], [31.1650, 121.4050]], { color: '#3ba55d', weight: 1, opacity: .45, dashArray: '4 6' }).addTo(map);
+
+  L.circle(HOME, { radius: 5000, color: '#3ba55d', weight: 1, fillOpacity: .06 }).addTo(map);
+
+  const readout = document.getElementById('cursor');
+  map.on('mousemove', e => {
+    readout.innerHTML = '经纬度：<b>' + e.latlng.lat.toFixed(4) + '°N, ' + e.latlng.lng.toFixed(4) + '°E</b>';
+  });
+  map.on('click', e => {
+    L.circleMarker(e.latlng, { radius: 3, color: '#3ba55d', fillOpacity: 1 }).addTo(map)
+      .bindTooltip(e.latlng.lat.toFixed(4) + ', ' + e.latlng.lng.toFixed(4)).openTooltip();
+  });
+</script>
+</body>
+</html>
