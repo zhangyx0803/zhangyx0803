@@ -88,7 +88,7 @@
 | --- | --- | --- |
 | **[上海市冷岛网络演变（2015–2025）](https://github.com/zhangyx0803/shanghai-cool-island-network)**<br/>*Shanghai Cool-Island Network* | 冷岛网络十年间怎么变、变化源于源地还是阻力面、先修哪里 | MSPA · MCR · 电路理论 · 2×2 析因分解 · 熵权法 · ArcGIS Pro |
 | **[乌镇东栅 / 西栅 游客情感对比](https://github.com/zhangyx0803/wuzhen-twin-gate-sentiment)**<br/>*Wuzhen Twin-Gate Sentiment* | 同一古镇两栅的游客体验差异，集中在哪些维度、如何随时间变化 | 点评采集 · 中文 NLP · 主题分类 · 随机森林 + SHAP · MWU + FDR |
-| **[世界气候类型分布图集](https://github.com/zhangyx0803/world-climate-atlas)**<br/>*World Climate Atlas* | 13 个气候类型各分布在哪里、为什么在那里 | Pillow 制图 · Natural Earth 110m · 专题制图规范 |
+
 
 ---
 
