@@ -81,26 +81,14 @@
 
 ### 🔬 Research / 科研成果
 
-> 从问题、数据到方法，全过程都在仓库里，不是成品截图。
-> *Problem, data and method in the open — not just result screenshots.*
+> 只公开**项目说明与方法/代码**；论文原文、图件与原始数据均不公开。
+> *Project overviews and code only — manuscripts, figures and raw data stay private.*
 
 | 项目 Project | 在回答什么 Question | 方法与栈 Methods & stack |
 | --- | --- | --- |
 | **[上海市冷岛网络演变（2015–2025）](https://github.com/zhangyx0803/shanghai-cool-island-network)**<br/>*Shanghai Cool-Island Network* | 冷岛网络十年间怎么变、变化源于源地还是阻力面、先修哪里 | MSPA · MCR · 电路理论 · 2×2 析因分解 · 熵权法 · ArcGIS Pro |
 | **[乌镇东栅 / 西栅 游客情感对比](https://github.com/zhangyx0803/wuzhen-twin-gate-sentiment)**<br/>*Wuzhen Twin-Gate Sentiment* | 同一古镇两栅的游客体验差异，集中在哪些维度、如何随时间变化 | 点评采集 · 中文 NLP · 主题分类 · 随机森林 + SHAP · MWU + FDR |
 | **[世界气候类型分布图集](https://github.com/zhangyx0803/world-climate-atlas)**<br/>*World Climate Atlas* | 13 个气候类型各分布在哪里、为什么在那里 | Pillow 制图 · Natural Earth 110m · 专题制图规范 |
-
-<p align="center">
-  <a href="https://github.com/zhangyx0803/shanghai-cool-island-network">
-    <img alt="cool island" src="https://img.shields.io/badge/status-proposal%20→%20in%20progress-3ba55d" />
-  </a>
-  <a href="https://github.com/zhangyx0803/wuzhen-twin-gate-sentiment">
-    <img alt="wuzhen" src="https://img.shields.io/badge/pipeline-13%20scripts-3ba55d" />
-  </a>
-  <a href="https://github.com/zhangyx0803/world-climate-atlas">
-    <img alt="atlas" src="https://img.shields.io/badge/maps-13-3ba55d" />
-  </a>
-</p>
 
 ---
 
